@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: MIT
-"""Lint the generated placeholder gallery without starting Minecraft."""
+"""Lint the generated Theurgy comparison gallery without starting Minecraft."""
 
 from __future__ import annotations
 
@@ -31,36 +31,42 @@ def main() -> int:
     )
     if load_tag != {"values": [f"{cases.NAMESPACE}:load"]}:
         raise ValueError("load tag differs from the exact namespace")
-    if len(cases.PLACEMENTS) != 1:
-        raise ValueError("placeholder must contain exactly one stock control")
-
-    placement = cases.PLACEMENTS[0]
-    if placement.block_state != "minecraft:stone" or placement.expected != (
-        "stock-visible"
-    ):
-        raise ValueError("placeholder must remain an honest stone stock control")
+    if len(cases.PLACEMENTS) != 6:
+        raise ValueError("gallery must contain five Theurgy cases and one control")
+    states = {placement.block_state for placement in cases.PLACEMENTS}
+    expected_states = {
+        "theurgy:sal_ammoniac_accumulator",
+        "theurgy:sal_ammoniac_tank",
+        "theurgy:incubator_mercury_vessel",
+        "theurgy:incubator_sulfur_vessel",
+        "theurgy:incubator_salt_vessel",
+        "minecraft:stone",
+    }
+    if states != expected_states:
+        raise ValueError("gallery block-state coverage differs")
     minimum_x, minimum_y, minimum_z, maximum_x, maximum_y, maximum_z = (
         cases.ENVELOPE
     )
-    if not (
-        minimum_x <= placement.x <= maximum_x
-        and minimum_y <= placement.y <= maximum_y
-        and minimum_z <= placement.z <= maximum_z
-    ):
-        raise ValueError("placeholder placement escaped its bounded envelope")
+    for placement in cases.PLACEMENTS:
+        if not (
+            minimum_x <= placement.x <= maximum_x
+            and minimum_y <= placement.y <= maximum_y
+            and minimum_z <= placement.z <= maximum_z
+        ):
+            raise ValueError("gallery placement escaped its bounded envelope")
 
     function_root = ROOT / f"datapack/data/{cases.NAMESPACE}/function"
     functions = "\n".join(
         path.read_text(encoding="utf-8")
         for path in sorted(function_root.glob("*.mcfunction"))
     )
-    if len(re.findall(r"^setblock ", functions, re.MULTILINE)) != 1:
-        raise ValueError("placeholder must place exactly one block")
+    if len(re.findall(r"^setblock ", functions, re.MULTILINE)) != 6:
+        raise ValueError("gallery must place exactly six blocks")
     lowered = functions.lower()
     for forbidden in ("summon ", "data merge", "op ", "deop ", "stop "):
         if forbidden in lowered:
-            raise ValueError(f"forbidden placeholder command: {forbidden}")
-    print("placeholder gallery lint passed: one bounded stock control")
+            raise ValueError(f"forbidden gallery command: {forbidden}")
+    print("Theurgy gallery lint passed: five shells and one stock control")
     return 0
 
 

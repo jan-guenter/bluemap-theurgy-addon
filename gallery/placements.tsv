@@ -1,2 +1,7 @@
 case_id	label	x	y	z	block_state	expected
-stock-control	stone stock rendering control	176	100	175	minecraft:stone	stock-visible
+sal-ammoniac-accumulator	sal ammoniac accumulator static shell	176	100	176	theurgy:sal_ammoniac_accumulator	installed-geometry-visible
+sal-ammoniac-tank	sal ammoniac tank static shell	180	100	176	theurgy:sal_ammoniac_tank	installed-geometry-visible
+incubator-mercury-vessel	incubator mercury vessel static shell	184	100	176	theurgy:incubator_mercury_vessel	installed-geometry-visible
+incubator-sulfur-vessel	incubator sulfur vessel static shell	176	100	180	theurgy:incubator_sulfur_vessel	installed-geometry-visible
+incubator-salt-vessel	incubator salt vessel static shell	180	100	180	theurgy:incubator_salt_vessel	installed-geometry-visible
+stock-control	stone stock rendering control	184	100	180	minecraft:stone	stock-visible

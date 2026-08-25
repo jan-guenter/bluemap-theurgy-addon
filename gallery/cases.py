@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: MIT
-"""Family-owned placeholder cases for the generated gallery."""
+"""Bounded comparison gallery for Theurgy's five static apparatus shells."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ from dataclasses import dataclass
 
 
 NAMESPACE = "theurgy_gallery"
-ENVELOPE = (174, 99, 173, 178, 103, 177)
+ENVELOPE = (173, 99, 173, 188, 103, 183)
 
 
 @dataclass(frozen=True)
@@ -22,15 +22,58 @@ class Placement:
     expected: str
 
 
-# SCAFFOLD_NOT_IMPLEMENTED: replace this stock-only row with the smallest
-# observed Theurgy defect fixture plus one or two stock controls.
 PLACEMENTS = (
+    Placement(
+        "sal-ammoniac-accumulator",
+        "sal ammoniac accumulator static shell",
+        176,
+        100,
+        176,
+        "theurgy:sal_ammoniac_accumulator",
+        "installed-geometry-visible",
+    ),
+    Placement(
+        "sal-ammoniac-tank",
+        "sal ammoniac tank static shell",
+        180,
+        100,
+        176,
+        "theurgy:sal_ammoniac_tank",
+        "installed-geometry-visible",
+    ),
+    Placement(
+        "incubator-mercury-vessel",
+        "incubator mercury vessel static shell",
+        184,
+        100,
+        176,
+        "theurgy:incubator_mercury_vessel",
+        "installed-geometry-visible",
+    ),
+    Placement(
+        "incubator-sulfur-vessel",
+        "incubator sulfur vessel static shell",
+        176,
+        100,
+        180,
+        "theurgy:incubator_sulfur_vessel",
+        "installed-geometry-visible",
+    ),
+    Placement(
+        "incubator-salt-vessel",
+        "incubator salt vessel static shell",
+        180,
+        100,
+        180,
+        "theurgy:incubator_salt_vessel",
+        "installed-geometry-visible",
+    ),
     Placement(
         "stock-control",
         "stone stock rendering control",
-        176,
+        184,
         100,
-        175,
+        180,
         "minecraft:stone",
         "stock-visible",
     ),

@@ -3,11 +3,10 @@
 A Java 21 BlueMap add-on for the exact `theurgy-1.76.0-mc1.21.1` profile in All the Mons
 `1.2.0` / Minecraft `1.21.1`.
 
-Status: safe generated prototype. The exact artifact gate and BlueMap 5.22
-adapter compile, but the family-owned renderer is intentionally absent.
-BlueMap therefore retains stock rendering until the explicit
-`SCAFFOLD_NOT_IMPLEMENTED` markers are replaced. A release cannot pass while
-those markers remain.
+Status: owner-accepted initial prerelease. The exact artifact gate admits the
+pinned Theurgy runtime and renders the five supported apparatus shells from
+its installed geometry and textures. Unsupported runtimes and blocks retain
+BlueMap's stock rendering.
 
 ## Build
 
