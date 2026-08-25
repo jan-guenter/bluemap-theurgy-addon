@@ -1,0 +1,6 @@
+{
+  "id": "bluemap-theurgy",
+  "entrypoint": "io.github.janguenter.bluemap.theurgy.BlueMapTheurgyAddon",
+  "dependencies": [],
+  "soft-dependencies": []
+}
