@@ -14,6 +14,6 @@ python gallery/lint.py
 bash gallery/package.sh /tmp/theurgy-gallery.zip
 ```
 
-The release gate rejects the `SCAFFOLD_NOT_IMPLEMENTED` marker in `cases.py`.
-Keep gallery generation deterministic, bounded, synthetic where practical, and
+The release gate rejects any prototype placeholder marker in `cases.py`. Keep
+gallery generation deterministic, bounded, synthetic where practical, and
 free of candidate assets or captured meshes.

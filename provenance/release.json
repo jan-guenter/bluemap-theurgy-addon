@@ -1,10 +1,76 @@
 {
-  "accepted_staging_entries": null,
-  "final_release_artifacts": null,
-  "note": "Populate only after owner visual acceptance; this file is not packaged.",
-  "owner_accepted_staging": null,
-  "repository": "https://github.com/jan-guenter/bluemap-theurgy-addon",
   "schema_version": 1,
-  "status": "prototype-not-owner-accepted",
-  "version": "0.1.0-SNAPSHOT"
+  "status": "owner-accepted-release-candidate",
+  "version": "0.1.0-alpha.1",
+  "release_date": "2026-08-25",
+  "repository": "https://github.com/jan-guenter/bluemap-theurgy-addon",
+  "tag": "v0.1.0-alpha.1",
+  "maven_coordinate": "io.github.jan-guenter:bluemap-theurgy-addon:0.1.0-alpha.1",
+  "owner_accepted_staging": {
+    "commit": "aea66e8e8a4222329d1c0e46686e9b4ce8efd652",
+    "tree": "a28425c629bb21e754f9a2bcd7536795225cf60a",
+    "production_jar_size": 67129,
+    "production_jar_sha256": "f7788a49d7d87ee9aa9c71d17f3a96f6c4a95de79d96e01336a43866b1d5f890",
+    "accepted_at": "2026-08-25",
+    "visual_acceptance": true,
+    "gallery_archive_size": 2055,
+    "gallery_archive_sha256": "54fa39efe9482be486e4da2f787e8e50257c34a8fbfe62ab9107f43fb6568927",
+    "fixtures": 6
+  },
+  "accepted_staging_entries": {
+    "path": "provenance/accepted-staging-entries.sha256",
+    "entry_count": 24,
+    "sha256": "6c2dccb0e26593dc504d2e3bd62c2f00ef34d9ff79475efa7643cf7bdf1b3df9"
+  },
+  "final_release_artifacts": {
+    "production_jar": {
+      "file_name": "bluemap-theurgy-addon-0.1.0-alpha.1.jar",
+      "size": 67128,
+      "sha256": "8517196b56ddc9c180e792ad33f28347781b3f08ffe9805f23b7932182035ce0"
+    },
+    "sources_jar": {
+      "file_name": "bluemap-theurgy-addon-0.1.0-alpha.1-sources.jar",
+      "size": 48608,
+      "sha256": "bece16bcb70dbcc1acba7a0957a67a8855f6373433abace9276d2eafe5a111fd"
+    },
+    "pom": {
+      "file_name": "bluemap-theurgy-addon-0.1.0-alpha.1.pom",
+      "size": 1317,
+      "sha256": "6eea85da84054cfafbf51ec182907d5910dace7fdced157b10e73b4ea94b772e"
+    },
+    "gradle_module": {
+      "file_name": "bluemap-theurgy-addon-0.1.0-alpha.1.module.json",
+      "size": 2817,
+      "sha256": "68c8a936745f36276394a7e6b325892fd375fe411c8e5247e1c5738ff8285eb2"
+    }
+  },
+  "staged_equivalence": {
+    "entry_manifest": "provenance/accepted-staging-entries.sha256",
+    "identical_non_manifest_entries": 24,
+    "whole_jar_byte_identical": false,
+    "only_changed_entry_bytes": "META-INF/MANIFEST.MF",
+    "change_reason": "Implementation-Version changed from the accepted SNAPSHOT marker to the final release version."
+  },
+  "gallery": {
+    "archive_file_name": "bluemap-theurgy-gallery.zip",
+    "size": 2055,
+    "sha256": "54fa39efe9482be486e4da2f787e8e50257c34a8fbfe62ab9107f43fb6568927",
+    "fixtures": 6,
+    "published_as_release_asset": false
+  },
+  "ephemeral_ci_inputs": {
+    "theurgy": {
+      "curseforge_project": 430636,
+      "curseforge_file": 8499344,
+      "size": 5324349,
+      "sha256": "c4bc955e30f1155b83954a0c2aba80adf19f72e6f5d95cfd8d72e5afb5e60d8f"
+    },
+    "policy": "Downloaded only into the ephemeral runner, verified before use, and never bundled or uploaded."
+  },
+  "verification": {
+    "production_jar_exact_byte_gate": true,
+    "sources_jar_exact_byte_gate": true,
+    "publication_metadata_exact_byte_gate": true,
+    "exact_input_gate": true
+  }
 }
