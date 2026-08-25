@@ -128,10 +128,6 @@ final class InstalledGeoModels {
         float[] origin = vector(cube, "origin", true);
         float[] size = vector(cube, "size", true);
         float inflate = number(cube, "inflate", 0F);
-        float[] uv = vector(cube, "uv", false);
-        if (uv.length != 2) {
-            throw new IllegalArgumentException("Bedrock cube UV is not box UV");
-        }
         boolean mirror = bool(cube, "mirror", boneMirror);
 
         Vector3f from = new Vector3f(
@@ -145,10 +141,22 @@ final class InstalledGeoModels {
                 origin[2] + size[2] + 8F + inflate
         );
         Rotation rotation = rotation(cube);
-        Map<Direction, Face> faces = faces(
-                texture, uv[0], uv[1], size,
-                textureWidth, textureHeight, mirror
-        );
+        JsonElement uv = cube.get("uv");
+        Map<Direction, Face> faces;
+        if (uv != null && uv.isJsonArray()) {
+            float[] boxUv = vector(cube, "uv", false);
+            faces = boxFaces(
+                    texture, boxUv[0], boxUv[1], size,
+                    textureWidth, textureHeight, mirror
+            );
+        } else if (uv != null && uv.isJsonObject()) {
+            if (mirror) {
+                throw new IllegalArgumentException("mirrored mapped UV is unsupported");
+            }
+            faces = mappedFaces(texture, uv.getAsJsonObject(), textureWidth, textureHeight);
+        } else {
+            throw new IllegalArgumentException("Bedrock cube UV is invalid");
+        }
         return new Element(from, to, rotation, false, 0, faces);
     }
 
@@ -165,7 +173,7 @@ final class InstalledGeoModels {
         );
     }
 
-    private static Map<Direction, Face> faces(
+    private static Map<Direction, Face> boxFaces(
             Key texture,
             float u,
             float v,
@@ -210,6 +218,36 @@ final class InstalledGeoModels {
                     faceUv,
                     new TextureVariable(new ResourcePath<Texture>(texture))
             ));
+        }
+        return result;
+    }
+
+    private static Map<Direction, Face> mappedFaces(
+            Key texture,
+            JsonObject mapping,
+            int textureWidth,
+            int textureHeight
+    ) {
+        EnumMap<Direction, Face> result = new EnumMap<>(Direction.class);
+        for (Direction direction : Direction.values()) {
+            JsonObject details = mapping.getAsJsonObject(direction.name().toLowerCase());
+            if (details == null) {
+                continue;
+            }
+            float[] origin = vector(details, "uv", false);
+            float[] size = vector(details, "uv_size", false);
+            result.put(direction, new Face(
+                    new Vector4f(
+                            normalize(origin[0], textureWidth),
+                            normalize(origin[1], textureHeight),
+                            normalize(origin[0] + size[0], textureWidth),
+                            normalize(origin[1] + size[1], textureHeight)
+                    ),
+                    new TextureVariable(new ResourcePath<Texture>(texture))
+            ));
+        }
+        if (result.isEmpty()) {
+            throw new IllegalArgumentException("mapped UV has no faces");
         }
         return result;
     }
