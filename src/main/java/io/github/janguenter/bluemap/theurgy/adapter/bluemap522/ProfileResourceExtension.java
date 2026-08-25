@@ -53,7 +53,7 @@ final class ProfileResourceExtension implements ResourcePackExtension {
     @Override
     public void bake() {
         if (runtime.active()) {
-            System.out.println("BlueMap Theurgy add-on active: 7 apparatus shells.");
+            System.out.println("BlueMap Theurgy add-on active: 5 apparatus shells.");
         }
     }
 }

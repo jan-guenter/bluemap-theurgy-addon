@@ -10,7 +10,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import de.bluecolored.bluemap.core.map.hires.block.BlockRendererType;
 import de.bluecolored.bluemap.core.resources.ResourcePath;
 import de.bluecolored.bluemap.core.resources.pack.resourcepack.ResourcePack;
 import de.bluecolored.bluemap.core.resources.pack.resourcepack.blockstate.BlockState;
@@ -50,10 +49,6 @@ final class InstalledGeoModels {
     }
 
     static boolean install(ResourcePack pack, Path artifact) {
-        if (!validInstalledInputs(pack)) {
-            return false;
-        }
-
         Map<TheurgyCatalog.Route, Model> compiled = new LinkedHashMap<>();
         try (ZipFile zip = new ZipFile(artifact.toFile())) {
             for (TheurgyCatalog.Route route : TheurgyCatalog.ROUTES) {
@@ -221,31 +216,6 @@ final class InstalledGeoModels {
 
     private static float normalize(float value, int dimension) {
         return value * 16F / dimension;
-    }
-
-    private static boolean validInstalledInputs(ResourcePack pack) {
-        for (TheurgyCatalog.Route route : TheurgyCatalog.ROUTES) {
-            BlockState state = pack.getBlockStates().get(route.block());
-            Model model = pack.getModels().get(route.originalModel());
-            if (state == null || state.getMultipart() != null || state.getVariants() == null
-                    || model == null || model.getElements() != null) {
-                return false;
-            }
-            List<Variant> variants = new ArrayList<>();
-            state.forEach(variants::add);
-            int expected = route.doubleTall() ? 4 : 1;
-            if (variants.size() != expected) {
-                return false;
-            }
-            for (Variant variant : variants) {
-                if (variant.getRenderer() != BlockRendererType.DEFAULT
-                        || !route.originalModel().equals(variant.getModel())
-                        || variant.isTransformed() || variant.isUvlock()) {
-                    return false;
-                }
-            }
-        }
-        return true;
     }
 
     private static BlockState single(Key model) {
