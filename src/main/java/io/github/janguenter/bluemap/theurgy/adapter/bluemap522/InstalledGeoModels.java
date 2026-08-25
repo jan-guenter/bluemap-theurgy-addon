@@ -188,8 +188,8 @@ final class InstalledGeoModels {
         EnumMap<Direction, Face> result = new EnumMap<>(Direction.class);
         for (Direction direction : Direction.values()) {
             Rect rectangle = switch (direction) {
-                case DOWN -> new Rect(u + depth, v, width, depth);
-                case UP -> new Rect(u + depth + width, v, width, depth);
+                case DOWN -> new Rect(u + depth + width, v + depth, width, -depth);
+                case UP -> new Rect(u + depth, v, width, depth);
                 case WEST -> mirror
                         ? new Rect(u + depth + width, v + depth, depth, height)
                         : new Rect(u, v + depth, depth, height);
