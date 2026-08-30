@@ -2,7 +2,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-package io.github.janguenter.bluemap.theurgy.adapter.bluemap522;
+package io.github.janguenter.bluemap.theurgy.adapter.bluemap523;
 
 import org.junit.jupiter.api.Test;
 
