@@ -50,12 +50,13 @@
     "former_local_adapter_package_present": false,
     "former_runtime_identity_accepted": false
   },
-  "adapter_api_source": {
-    "module_repository": "https://github.com/jan-guenter/bluemap-addon-adapter-api",
-    "module_version": "0.1.0-alpha.2",
-    "module_tag": "v0.1.0-alpha.2",
-    "module_release_commit": "e81f08bc4bfbf02d810ec8949a019130e2e61634",
-    "module_source_tree": "2f974c9bb2ba13888d69682f86f30f58922d30eb",
+  "adapter_api_migration": {
+    "repository": "https://github.com/jan-guenter/bluemap-addon-adapter-api",
+    "version": "0.1.0-alpha.2",
+    "tag": "v0.1.0-alpha.2",
+    "release_target_commit": "e81f08bc4bfbf02d810ec8949a019130e2e61634",
+    "source_tree": "2f974c9bb2ba13888d69682f86f30f58922d30eb",
+    "bluemap_commit": "7e07f4e74ec1e92a6ead9aa1e66054af3e133aac",
     "compiled_source_count": 4,
     "replaced_local_helpers": [
       "AdapterCompatibility",
@@ -80,7 +81,7 @@
     "exact_input_gate": true,
     "production_archive_boundary_gate": true,
     "sources_archive_boundary_gate": true,
-    "adapter_api_source_boundary_gate": true,
+    "adapter_api_migration_boundary_gate": true,
     "exact_feature_backport_runtime_identity_gate": true,
     "gradle_9_4_clean_builds": 3,
     "same_toolchain_reproducibility_builds": 3,
