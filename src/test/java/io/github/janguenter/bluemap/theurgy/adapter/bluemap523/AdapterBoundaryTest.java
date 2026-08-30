@@ -21,6 +21,10 @@ class AdapterBoundaryTest {
                 Key.parse("bluemap_theurgy:exact_profile"),
                 BlueMap523Adapter.extension().getKey()
         );
+        assertInstanceOf(
+                ProfileResourceExtension.class,
+                BlueMap523Adapter.extension().create(null)
+        );
         assertThrows(ClassNotFoundException.class, () -> Class.forName(
                 "io.github.janguenter.bluemap.theurgy.adapter.bluemap523."
                         + "ProfileResourceExtensionType"
