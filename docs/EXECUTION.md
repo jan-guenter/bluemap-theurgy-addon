@@ -4,11 +4,12 @@ This repository starts inactive and stock-safe. Implement only the smallest
 observed Theurgy rendering defect before staging.
 
 Before running Gradle gates, activate a Python 3.11 or newer virtual
-environment, initialize the pinned toolkit submodule, and install the exact
-development-only toolkit into the environment:
+environment, initialize the pinned toolkit and Adapter API submodules, and
+install the exact development-only toolkit into the environment:
 
 ```bash
-git submodule update --init --recursive -- tooling/bluemap-addon-toolkit
+git submodule update --init --recursive -- \
+  tooling/bluemap-addon-toolkit modules/bluemap-addon-adapter-api
 python -m pip install --disable-pip-version-check --no-deps \
   --require-hashes --only-binary=:all: \
   --requirement requirements/toolkit.txt

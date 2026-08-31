@@ -1,35 +1,45 @@
 # BlueMap Theurgy Add-on
 
-A Java 21 BlueMap add-on for the exact `theurgy-1.76.0-mc1.21.1` profile in All the Mons
-`1.2.0` / Minecraft `1.21.1`.
+A Java 21 BlueMap 5.23 feature-backport add-on for the exact
+`theurgy-1.76.0-mc1.21.1` profile in All the Mons `1.2.0` / Minecraft
+`1.21.1`.
 
-Status: owner-accepted initial prerelease. The exact artifact gate admits the
-pinned Theurgy runtime and renders the five supported apparatus shells from
-its installed geometry and textures. Unsupported runtimes and blocks retain
-BlueMap's stock rendering.
+Status: owner-accepted `0.1.0-alpha.2` release candidate. The unchanged
+five-apparatus visual scope targets only BlueMap feature-backport commit
+`7e07f4e74ec1e92a6ead9aa1e66054af3e133aac` and API commit
+`285c9a60eff3ac2b0cab308ce1058d1565be0971`. It still admits only the exact
+Theurgy runtime and reads geometry and textures from that installed JAR.
+Unsupported runtimes and blocks retain BlueMap's stock rendering.
 
 ## Build
 
-Clone with `--recurse-submodules`, or initialize an existing checkout with
-`git submodule update --init --recursive -- tooling/bluemap-addon-toolkit`.
-The settings preflight accepts only the committed toolkit gitlink at commit
-`6cd34a8368cc4ee8628fbe830a90ec5b14960629` and rejects an uninitialized,
-changed, or dirty toolkit checkout.
+Clone with `--recurse-submodules`, or initialize an existing checkout with:
+
+```bash
+git submodule update --init --recursive -- \
+  tooling/bluemap-addon-toolkit modules/bluemap-addon-adapter-api
+```
+
+The settings preflight accepts only the committed toolkit and Adapter API
+gitlinks. It rejects an uninitialized, changed, dirty, incorrectly pinned, or
+source-tree-mismatched checkout.
 
 ```bash
 gradle --no-daemon -PbluemapSourcePath=../bluemap-backport clean check build
 ```
 
-`check` is the quick Java/checkstyle/archive gate. `prototypeCheck` additionally
-requires every exact candidate JAR property and validates the placeholder
-gallery. See `provenance/upstreams.json` for immutable artifact identities and
-the [execution guide](docs/EXECUTION.md) for the prototype-to-release loop.
+`check` is the Java, checkstyle, and archive gate. `prototypeCheck` also
+requires every exact candidate JAR property and validates the gallery. The
+production and sources JARs contain the four exact Adapter API sources, never
+the standalone module JAR. See `provenance/upstreams.json` for immutable input
+identities and the [execution guide](docs/EXECUTION.md) for the review and
+release loop.
 
 ## Install
 
-After a renderer exists, place the production JAR in BlueMap's add-on pack
-directory and restart the BlueMap JVM. Removal plus one restart restores stock
-behavior; the add-on creates no custom world state.
+Place the production JAR in BlueMap's add-on pack directory and restart the
+BlueMap JVM. Removal plus one restart restores stock behavior. The add-on
+creates no custom world state.
 
 Set `-Dbluemap.theurgy.disabled=true` to leave the exact profile inactive.
 
