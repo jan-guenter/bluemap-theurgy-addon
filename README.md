@@ -4,9 +4,8 @@ A Java 21 BlueMap 5.23 feature-backport add-on for the exact
 `theurgy-1.76.0-mc1.21.1` profile in All the Mons `1.2.0` / Minecraft
 `1.21.1`.
 
-Status: unpublished `0.1.0-alpha.2` migration candidate. The owner accepted
-and released the unchanged five-apparatus visual scope in `0.1.0-alpha.1`.
-This candidate targets only BlueMap feature-backport commit
+Status: owner-accepted `0.1.0-alpha.2` release candidate. The unchanged
+five-apparatus visual scope targets only BlueMap feature-backport commit
 `7e07f4e74ec1e92a6ead9aa1e66054af3e133aac` and API commit
 `285c9a60eff3ac2b0cab308ce1058d1565be0971`. It still admits only the exact
 Theurgy runtime and reads geometry and textures from that installed JAR.

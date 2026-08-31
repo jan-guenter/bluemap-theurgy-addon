@@ -1,12 +1,11 @@
 {
   "schema_version": 1,
-  "status": "unpublished-migration-candidate",
+  "status": "owner-accepted-release-candidate",
   "version": "0.1.0-alpha.2",
   "release_date": "2026-08-30",
   "repository": "https://github.com/jan-guenter/bluemap-theurgy-addon",
   "tag": "v0.1.0-alpha.2",
   "maven_coordinate": "io.github.jan-guenter:bluemap-theurgy-addon:0.1.0-alpha.2",
-  "published": false,
   "inherited_visual_acceptance": {
     "baseline_version": "0.1.0-alpha.1",
     "baseline_release_commit": "7d27df09578fd521644ac15a4caf232b9729f312",
@@ -18,7 +17,48 @@
     "original_visual_acceptance": true,
     "scope": "The exact Theurgy profile, five apparatus routes, gallery, geometry compiler, installed-resource use and stock fallback are unchanged. Alpha.2 moves only the BlueMap adapter boundary and shared bootstrap helpers to their 5.23-only packages."
   },
-  "candidate_artifacts": {
+  "owner_accepted_staging": {
+    "accepted_at": "2026-08-31",
+    "visual_acceptance": true,
+    "evidence_bundle": "bluemap-atmons-integration-20260831-ars-batch-523-native",
+    "tested_source_commit": "21c32c4dc7a9e59d900d584195b00e2042fc0e4b",
+    "tested_source_tree": "3a51f83801e3334ce49ef0cbe64ec0adeefedb5f",
+    "base_release_candidate": {
+      "file_name": "bluemap-theurgy-addon-0.1.0-alpha.2.jar",
+      "size": 73035,
+      "sha256": "3da20938edeb04617f3227abe8d1fd18b342c59519fbfe0ff255284f9f97beef",
+      "entrypoint_class_sha256": "61cce5263fff9e5c0374dd70947a1d71c0133a008472c1e4f8a32162ae7ea61c"
+    },
+    "staged_visual_artifact": {
+      "file_name": "bluemap-theurgy-addon-0.1.0-alpha.1.jar",
+      "size": 73397,
+      "sha256": "fb381e16f9a748c1eb869a32bcdfa3a772b726a3d0642b1476e3a9b5d3710585",
+      "gate_mode": "local-native-523-entrypoint-overlay",
+      "replaced_class": "io/github/janguenter/bluemap/theurgy/BlueMapTheurgyAddon.class",
+      "replaced_class_sha256": "f0c9ae56aaa211eb0f2a7780498498198287cee284604ecc851cd118f44ddb78"
+    },
+    "acceptance_scope": "The owner accepted the combined-gallery render produced from the alpha.2 base candidate with only its entrypoint replaced by the integration marker overlay. The profile, adapter, geometry compiler and renderer classes came unchanged from the base candidate.",
+    "exact_production_jar_runtime_gate": false,
+    "runtime_suite": {
+      "status": "passed",
+      "galleries": 51,
+      "passed": 51,
+      "failed": 0,
+      "theurgy_checks": 6,
+      "sha256": "c29e211846dc32e74d1907e7fb7170b741753784d85b88d5ca40574177d4d38f"
+    },
+    "render": {
+      "map_id": "atmons_integration",
+      "fresh_tiles": 589,
+      "regions": 4,
+      "evidence_sha256": "f61a87553006be39603cc77872ef9ebe0ffd18d57d2c87d380055aa2ba25f2db",
+      "browser_sanity": true,
+      "owner_visual_acceptance": true
+    },
+    "candidate_manifest_sha256": "f8f3b03e15743ff5069c8882c14a0afc579a4e84431b4f0f5b116c20eadae39e",
+    "candidate_override_lock_sha256": "d78e87a56bf63f28fb20fde376f49ade70a4d911c47f907d8a44c22f20c8fd5d"
+  },
+  "final_release_artifacts": {
     "production_jar": {
       "file_name": "bluemap-theurgy-addon-0.1.0-alpha.2.jar",
       "size": 73035,
@@ -37,8 +77,20 @@
     "gradle_module": {
       "file_name": "bluemap-theurgy-addon-0.1.0-alpha.2.module.json",
       "size": 2817,
-      "sha256": "876fe87d6f5bd5151379b8b8bebffb287454697ac7dbc332cfc81720a3867b53"
+      "sha256": "f727d41ee19ce60d462f2c26d04a8a0aa2aac2a4cb7ce45ce4a278c2f17e4927"
     }
+  },
+  "accepted_staging_entries": {
+    "path": "provenance/accepted-staging-entries.sha256",
+    "entry_count": 25,
+    "sha256": "5e33be977fde328ac4671cfdf8ddd6770585cb7ea549e3e8758260fac59d2234"
+  },
+  "staged_equivalence": {
+    "entry_manifest": "provenance/accepted-staging-entries.sha256",
+    "identical_non_manifest_entries": 25,
+    "whole_jar_byte_identical": true,
+    "only_changed_entry_bytes": "none",
+    "change_reason": "The sealed release artifact reproduces the exact alpha.2 base candidate used to build the accepted integration overlay."
   },
   "exact_feature_backport_migration": {
     "bluemap_version": "5.22-feature.backport-5.23-stateless-java-web-server-46",
@@ -88,6 +140,9 @@
     "same_toolchain_reproducibility_files": 4,
     "hostile_adapter_api_gitlink_trust_probes": true,
     "gallery_lint": true,
-    "checkstyle": true
+    "checkstyle": true,
+    "combined_integration_two_boot_gate": true,
+    "staged_overlay_owner_visual_acceptance": true,
+    "exact_production_jar_runtime_gate": false
   }
 }
